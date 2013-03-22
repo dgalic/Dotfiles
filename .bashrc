@@ -29,4 +29,27 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+#-------------------------------------------
+#       Perso
+#-------------------------------------------
+
+# variables
+export EDITOR='vim'
+export PS2='...'
+export DEBFULLNAME='Galichet David'
+export DEBEMAIL='galichet.david@yahoo.fr'
+
+#usual
+alias rm='rm -i'
+alias rmdir='rm -Ri'
+
+function mkcd() { mkdir $1 && cd $1; }
+function cdl() { cd $1 && ls -Fgh; }
+
+#perso
+alias Ofac="sshfs galichet@lucien.informatique.univ-paris-diderot.fr:/info/nouveaux/galichet ~/Fac	"
+alias Ffac="fusermount -u ~/Fac"
+alias sauvC="sh .bashsauvC.sh"
+alias connectN="ssh galichet@nivose.informatique.univ-paris-diderot.fr"
+alias connectL="ssh galichet@lucien.informatique.univ-paris-diderot.fr"
 
