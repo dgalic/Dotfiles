@@ -3,7 +3,7 @@ set nocompatible     " no compatible with vi
 set autoindent       " auto-indentation
 set backup           " keep a backup file
 set encoding=utf-8   " set utf-8 encoding
-set expandtab        " replace tabs with spaces
+"set expandtab        " replace tabs with spaces
 set ff=unix          " default file type
 set history=100      " more command history
 set number           " display line number
@@ -26,10 +26,22 @@ set undodir=~/.vim/backups " keep undo history accross sessions
 set undofile 		" see 'undodir'
 set wildmenu 		" show completion possibilities in command mode
 
+set exrc
+
+au BufNewFile,BufRead *.conflicts set ft=conflicts
 
 setlocal spelllang=fr,en
 set nospell "default no.txt
 autocmd Filetype txt set spell
+
+" tabs
+noremap <c-down> :tabn<cr>
+noremap <c-up>   :tabp<cr>
+inoremap <c-down> <esc>:tabn<cr>
+inoremap <c-up>   <esc>:tabp<cr>
+
+noremap <leader>T :tabnew<cr>
+nnoremap gt <c-w>gf
 
 "-- function --
 fun Use_c()
@@ -43,7 +55,7 @@ fun Use_php()
 endf
 
 fun Use_python()
-"set omnifunc=python3complete#Complete
+	"set omnifunc=python3complete#Complete
     set omnifunc=pythoncomplete#Complete
 endf
 
@@ -57,17 +69,24 @@ fun Use_xml()
     set omnifunc=xmlcomplete#CompleteTags
 endf
 
+fun Use_prolog()
+    set omnifunc=prologcomplete#Complete
+endf
+
+fun Use_ocaml()
+    set omnifunc=ocamlcomplete#Complete
+endf
 
 if has("autocmd")
-
 	" completion
 	autocmd FileType c call Use_c()
-	autocmd FileType ocaml call Set_tab2()
+	autocmd FileType ocaml call Use_ocaml()
 	autocmd FileType php call Use_php()
 	autocmd FileType python call Use_python()
 	autocmd FileType sql call Use_sql()
 	autocmd FileType xml call Use_xml()
+	autocmd FileType prolog call Use_prolog()
 endif " has("autocmd")
 
 colorscheme 256-jungle
-
+set secure
