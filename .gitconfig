@@ -1,0 +1,27 @@
+[user]
+    name = Galichet David
+    email = galichet.david@gmail.com
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = auto
+[alias]
+    br = branch
+    st = status
+    ci = commit
+    cm = commit -m
+    co = checkout
+    fp = format-page
+    lg = log --graph --pretty=oneline --abbrev-commit
+    plo = pull origin
+    pso = push origin
+[push]
+    default = upstream
+[core]
+    pager = cat
+    editor = vim
+[branch]
+    autosetupmerge = true
+[rerere]
+    enabled = true
